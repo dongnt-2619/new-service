@@ -1,0 +1,29 @@
+management:
+    endpoints:
+        web:
+            exposure:
+                include: '*'
+    endpoint:
+        health:
+            show-details: always
+    metrics:
+        tags:
+            application: ${spring.application.name}
+server:
+    port: 8081
+spring:
+    application:
+        name: product-service
+    data:
+        mongodb:
+            uri: mongodb://127.0.0.1:27017/new-service
+#    rabbitmq:
+#        host: 10.0.4.216
+#        password: guest
+#        port: 32170
+#        username: guest
+#    security:
+#        oauth2:
+#            resourceserver:
+#                jwt:
+#                    issuer-uri: http://10.0.4.109:32199/auth/realms/ssv-realm

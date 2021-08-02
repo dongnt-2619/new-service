@@ -1,0 +1,6 @@
+com/tannv/system/productservice/ProductServiceApplication.class
+com/tannv/system/productservice/model/Product$ProductBuilder.class
+com/tannv/system/productservice/model/Product.class
+com/tannv/system/productservice/controller/ProductController.class
+com/tannv/system/productservice/repository/ProductRepository.class
+com/tannv/system/productservice/config/SecurityConfig.class

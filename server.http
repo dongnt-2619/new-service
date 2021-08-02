@@ -1,0 +1,13 @@
+GET http://localhost:8080/api/product
+Accept: application/json
+
+###
+POST http://localhost:8081/api/product
+Content-Type: application/json
+
+{"name": "iphone 12",
+  "description": "iphone 12 Gold",
+  "price": 1230
+}
+
+###
