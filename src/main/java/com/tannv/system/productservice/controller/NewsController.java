@@ -1,14 +1,18 @@
 package com.tannv.system.productservice.controller;
 
+import com.tannv.system.productservice.config.Constants;
 import com.tannv.system.productservice.exception.ResourceNotFoundException;
 import com.tannv.system.productservice.model.News;
 import com.tannv.system.productservice.repository.NewsRepository;
 import com.tannv.system.productservice.service.NewsService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -26,7 +30,9 @@ import java.util.List;
 @Slf4j
 public class NewsController {
 
-    private final NewsRepository newsRepository;
+    @Autowired
+    private NewsRepository newsRepository;
+    @Autowired
     private final NewsService newsService;
 
     @GetMapping()
@@ -82,5 +88,14 @@ public class NewsController {
         newsService.unpublish(id);
     }
 
-
+    @GetMapping("/publish")
+    public ResponseEntity<List<News>> getNewsPublish(Pageable pageable){
+        Page<News> newsPublish = newsRepository.findNewsByStatus(Constants.NEW_STATE.PUBLISH , pageable);
+        return ResponseEntity.ok().body(newsPublish.getContent());
+    }
+    @GetMapping("/search")
+    public ResponseEntity<List<News>> search(@RequestParam String keyword , Pageable pageable){
+        Page<News> searchNews = newsRepository.findAllByTitleLike(keyword , pageable);
+        return ResponseEntity.ok().body(searchNews.getContent());
+    }
 }
