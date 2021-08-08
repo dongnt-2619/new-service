@@ -94,8 +94,8 @@ public class NewsController {
         return ResponseEntity.ok().body(newsPublish.getContent());
     }
     @GetMapping("/search")
-    public ResponseEntity<List<News>> search(@RequestParam String keyword , Pageable pageable){
-        Page<News> searchNews = newsRepository.findAllByTitleLike(keyword , pageable);
+    public ResponseEntity<List<News>> search(MultiValueMap<String, String> queryParams , Pageable pageable){
+        Page<News> searchNews = newsRepository.findAllByTitleLikeOrAuthorLike(queryParams , pageable);
         return ResponseEntity.ok().body(searchNews.getContent());
     }
 }

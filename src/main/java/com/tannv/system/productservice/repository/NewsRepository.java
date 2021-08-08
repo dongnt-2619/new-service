@@ -5,6 +5,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
+import org.springframework.util.MultiValueMap;
 
 /**
  * @author nguyen.van.tan (David Black)
@@ -16,5 +17,5 @@ import org.springframework.stereotype.Repository;
 public interface NewsRepository extends MongoRepository<News, String>{
     Page<News> findAll(Pageable pageable);
     Page<News> findNewsByStatus(Integer status , Pageable pageable);
-    Page<News> findAllByTitleLike(String keyword , Pageable pageable);
+    Page<News> findAllByTitleLikeOrAuthorLike(MultiValueMap<String, String> queryParams, Pageable pageable);
 }
