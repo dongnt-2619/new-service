@@ -109,4 +109,8 @@ public class NewsController {
         return null;
     }
 
+    @DeleteMapping("/delete")
+    public String delete() {
+        return null;
+     }
 }
