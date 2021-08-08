@@ -102,4 +102,8 @@ public class NewsController {
     public String re() {
         return null;
     }
+    @GetMapping("/test1")
+    public Boolean test1() {
+        return true;
+    }
 }
