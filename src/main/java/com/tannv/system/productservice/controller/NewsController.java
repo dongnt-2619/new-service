@@ -98,4 +98,8 @@ public class NewsController {
         Page<News> searchNews = newsRepository.findAllByTitleLikeOrAuthorLike(queryParams , pageable);
         return ResponseEntity.ok().body(searchNews.getContent());
     }
+    @GetMapping("/test")
+    public String test(){
+        return null;
+    }
 }
