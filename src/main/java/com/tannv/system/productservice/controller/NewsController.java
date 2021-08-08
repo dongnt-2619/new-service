@@ -104,4 +104,9 @@ public class NewsController {
         return true;
     }
 
+    @GetMapping("/dong")
+    public String get() {
+        return null;
+    }
+
 }
